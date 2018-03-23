@@ -34,12 +34,11 @@ public class advancedCalc extends AppCompatActivity {
     Button btnKropka;
     @BindView(R.id.btnBksp)
     Button btnBksp;
-
-    String fieldContent = "";
-    boolean negative = false;
+    boolean resultSet = false;
+    @BindViews({R.id.btnSin,R.id.btnCos,R.id.btnTan,R.id.btnLn,R.id.btnLog,R.id.btnSqrt,R.id.btnXpow2})
+            List<Button> oneFactorOperators;
+    int kropkaCounter=0;
     List<String> opers = new ArrayList<>();
-    List<Double> numbersToCalc = new ArrayList<>();
-
     Pattern p = Pattern.compile("[^0-9 ]", Pattern.CASE_INSENSITIVE);
 
     @Override
@@ -49,11 +48,32 @@ public class advancedCalc extends AppCompatActivity {
         ButterKnife.bind(this);
         init();
     }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
 
-    void refreshFieldContent()
-    {
-        fieldContent = field.getText().toString();
+        if(!opers.isEmpty()) savedInstanceState.putString("oper", opers.get(0));
+        savedInstanceState.putString("fieldContent", field.getText().toString());
+        savedInstanceState.putInt("kropkaCounter", 1);
+
+
+
+
+        super.onSaveInstanceState(savedInstanceState);
     }
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+
+        super.onRestoreInstanceState(savedInstanceState);
+
+        String savedOper = savedInstanceState.getString("oper");
+        if(opers!=null && savedOper!=null)
+        {
+            opers.add(savedOper); //operatora do listy operatorow
+        }
+        field.setText(savedInstanceState.getString("fieldContent"));
+        kropkaCounter = savedInstanceState.getInt("kropkaCounter");
+    }
+
 
     void init() {
         for (final Button b : numbers) {
@@ -68,7 +88,7 @@ public class advancedCalc extends AppCompatActivity {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (field.getText().length() >= 15)
+                    if (field.getText().length() >= 25)
                     {
                         toastNotification("Za malo miejsca");
                         return;
@@ -94,6 +114,7 @@ public class advancedCalc extends AppCompatActivity {
                         }
                         System.out.println("Operator " + opers.get(0));
                         System.out.println("Ostatni operator w liscie " + opers.get(opers.size() - 1) + " wielkosc listy operatorow " + opers.size());
+                        kropkaCounter=0;
                     }
 
 
@@ -105,7 +126,7 @@ public class advancedCalc extends AppCompatActivity {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (field.getText().length() >= 15)
+                    if (field.getText().length() >= 25)
                     {
                         toastNotification("Za malo miejsca");
                         return;
@@ -150,7 +171,6 @@ public class advancedCalc extends AppCompatActivity {
             public void onClick(View view) {
                 field.setText("");
                 opers.clear();
-                numbersToCalc.clear();
             }
         });
 
@@ -189,17 +209,74 @@ public class advancedCalc extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+
                 if(field.getText().length()<1)
                 {
+                    kropkaCounter++;
                     field.append("0.");
                 }
-                else if(!p.matcher(getLastCharacter()).find())
+                else if(!p.matcher(getLastCharacter()).find() )
                 {
-                    field.append(".");
+                    if(kropkaCounter!=1)
+                    {
+                        kropkaCounter++;
+                        field.append(".");
+
+                    }
+
                 }
 
             }
         });
+
+        for(final Button b : oneFactorOperators)
+        {
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
+                {
+                    if(!opers.isEmpty() || field.getText().toString().matches("[^0-9\\.]")) return;
+                    field.setText(b.getText()+"("+field.getText()+")");
+                    kropkaCounter=1;
+                    opers.clear();
+                    if(b.getText().equals("sin"))
+                    {
+                        field.append("\n"+Math.sin(Double.valueOf((field.getText().toString().replaceAll("[^0-9]","")))));
+                    }
+                    if(b.getText().equals("cos"))
+                    {
+                        field.append("\n"+Math.cos(Double.valueOf((field.getText().toString().replaceAll("[^0-9]","")))));
+                    }
+                    if(b.getText().equals("tan"))
+                    {
+                        field.append("\n"+Math.tan(Double.valueOf((field.getText().toString().replaceAll("[^0-9]","")))));
+                    }
+                    if(b.getText().equals("ln"))
+                    {
+                        field.append("\n"+Math.log1p(Double.valueOf((field.getText().toString().replaceAll("[^0-9]","")))));
+                    }
+                    if(b.getText().equals("log"))
+                    {
+                        field.append("\n"+Math.log10(Double.valueOf((field.getText().toString().replaceAll("[^0-9]","")))));
+                    }
+                    if(b.getText().equals("sqrt"))
+                    {
+                        field.append("\n"+Math.sqrt(Double.valueOf((field.getText().toString().replaceAll("[^0-9]","")))));
+                    }
+                    if(b.getText().equals("x^2"))
+                    {
+                        field.append("\n"+Math.pow(Double.valueOf((field.getText().toString().replaceAll("[^0-9]",""))),2));
+                    }
+                    if(b.getText().equals("x^y"))
+                    {
+                        field.append("\n"+Math.pow(Double.valueOf((field.getText().toString().replaceAll("[^0-9]",""))),2));
+                    }
+                    resultSet=true;
+                    opers.clear();
+                    kropkaCounter=0;
+                }
+            });
+        }
 
     }
 
@@ -222,7 +299,6 @@ public class advancedCalc extends AppCompatActivity {
             toastNotification("Brak operatora");
             return;
         }
-        fieldContent = field.getText().toString();
         String[] numbs;
         if(field.getText().toString().startsWith("-")) {
             numbs = field.getText().toString().substring(1).split("[^0-9.]");

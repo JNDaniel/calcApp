@@ -37,11 +37,8 @@ public class basicCalc extends AppCompatActivity {
     @BindView(R.id.btnBksp)
     Button btnBksp;
 
-    String fieldContent = "";
-    boolean negative = false;
+    int kropkaCounter=0;
     List<String> opers = new ArrayList<>();
-    List<Double> numbersToCalc = new ArrayList<>();
-
     Pattern p = Pattern.compile("[^0-9 ]", Pattern.CASE_INSENSITIVE);
 
     @Override
@@ -51,11 +48,32 @@ public class basicCalc extends AppCompatActivity {
         ButterKnife.bind(this);
         init();
     }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
 
-    void refreshFieldContent()
-    {
-        fieldContent = field.getText().toString();
+        if(!opers.isEmpty()) savedInstanceState.putString("oper", opers.get(0));
+        savedInstanceState.putString("fieldContent", field.getText().toString());
+        savedInstanceState.putInt("kropkaCounter", 1);
+
+
+
+
+        super.onSaveInstanceState(savedInstanceState);
     }
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+
+        super.onRestoreInstanceState(savedInstanceState);
+
+        String savedOper = savedInstanceState.getString("oper");
+        if(opers!=null && savedOper!=null)
+        {
+            opers.add(savedOper); //operatora do listy operatorow
+        }
+        field.setText(savedInstanceState.getString("fieldContent"));
+        kropkaCounter = savedInstanceState.getInt("kropkaCounter");
+    }
+
 
     void init() {
         for (final Button b : numbers) {
@@ -70,7 +88,7 @@ public class basicCalc extends AppCompatActivity {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (field.getText().length() >= 15)
+                    if (field.getText().length() >= 25)
                     {
                         toastNotification("Za malo miejsca");
                         return;
@@ -96,6 +114,7 @@ public class basicCalc extends AppCompatActivity {
                         }
                         System.out.println("Operator " + opers.get(0));
                         System.out.println("Ostatni operator w liscie " + opers.get(opers.size() - 1) + " wielkosc listy operatorow " + opers.size());
+                        kropkaCounter=0;
                     }
 
 
@@ -107,7 +126,7 @@ public class basicCalc extends AppCompatActivity {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (field.getText().length() >= 15)
+                    if (field.getText().length() >= 25)
                     {
                         toastNotification("Za malo miejsca");
                         return;
@@ -152,7 +171,6 @@ public class basicCalc extends AppCompatActivity {
             public void onClick(View view) {
                 field.setText("");
                 opers.clear();
-                numbersToCalc.clear();
             }
         });
 
@@ -191,13 +209,21 @@ public class basicCalc extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+
                 if(field.getText().length()<1)
                 {
+                    kropkaCounter++;
                     field.append("0.");
                 }
-                else if(!p.matcher(getLastCharacter()).find())
+                else if(!p.matcher(getLastCharacter()).find() )
                 {
-                    field.append(".");
+                    if(kropkaCounter!=1)
+                    {
+                        kropkaCounter++;
+                        field.append(".");
+
+                    }
+
                 }
 
             }
@@ -224,7 +250,6 @@ public class basicCalc extends AppCompatActivity {
             toastNotification("Brak operatora");
             return;
         }
-        fieldContent = field.getText().toString();
        String[] numbs;
        if(field.getText().toString().startsWith("-")) {
            numbs = field.getText().toString().substring(1).split("[^0-9.]");
