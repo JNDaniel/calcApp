@@ -2,6 +2,7 @@ package com.example.daniel.calc;
 
 import org.junit.Test;
 
+import static com.example.daniel.calc.basicCalc.countOccurances;
 import static org.junit.Assert.*;
 
 /**
@@ -12,6 +13,14 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        assertEquals(4, 2+2);
+    }
+    @Test
+    public void checkCountOccurencesMethod()
+    {
+        basicCalc bc = new basicCalc();
+        assertEquals(1,countOccurances("ABB","A"));
+        assertEquals(2,countOccurances("ABBA","A"));
+        assertEquals(2,countOccurances("ABBA","B"));
     }
 }

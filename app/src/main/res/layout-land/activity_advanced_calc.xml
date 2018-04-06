@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/field"
-        android:layout_width="527dp"
-        android:layout_height="85dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -21,14 +21,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="502dp"
-        android:layout_height="218dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TableRow
@@ -42,7 +45,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Bksp"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/c"
@@ -50,7 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="C"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnZnak"
@@ -58,7 +65,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:text="+-"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -71,28 +80,36 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="sin"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnCos"
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:text="cos"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnTan"
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:text="tan"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnLn"
                 android:layout_width="99dp"
                 android:layout_height="wrap_content"
                 android:text="ln"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -105,28 +122,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="sqrt"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnXpow2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="x^2"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnXpowY"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x^y"
-                android:textSize="10sp" />
+                android:text="^"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnLog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="log"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -139,28 +164,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="7"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="8"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="9"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnDziel"
                 android:layout_width="153dp"
                 android:layout_height="wrap_content"
                 android:text="/"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -173,14 +206,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5"
+                android:textAlignment="center"
                 android:textSize="10sp"
+                android:textStyle="bold"
                 android:visibility="visible" />
 
             <Button
@@ -188,14 +225,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="6"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnMnoz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -208,28 +249,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnMinus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="-"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
         </TableRow>
 
@@ -243,28 +292,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnKropka"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="."
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnRowna"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="="
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnPlus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+"
-                android:textSize="10sp" />
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
         </TableRow>
     </TableLayout>
 
