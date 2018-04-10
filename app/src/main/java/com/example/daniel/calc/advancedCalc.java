@@ -40,7 +40,6 @@ public class advancedCalc extends AppCompatActivity {
     int kropkaCounter=0;
     List<String> opers = new ArrayList<>();
     Pattern p = Pattern.compile("[^0-9 ]", Pattern.CASE_INSENSITIVE);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,7 +162,7 @@ public class advancedCalc extends AppCompatActivity {
                         toastNotification("Za malo miejsca");
                         return;
                     }
-                    if(field.getText().toString().equalsIgnoreCase("nan") || field.getText().toString().equalsIgnoreCase("infinity"))
+                    if(field.getText().toString().contains("NaN") || field.getText().toString().contains("Infinity"))
                     {
                         toastNotification("Niedozwolone dzialanie Infinity / Nan");
                         return;
@@ -212,7 +211,6 @@ public class advancedCalc extends AppCompatActivity {
 
             }
         });
-
         btnZnak.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -245,10 +243,16 @@ public class advancedCalc extends AppCompatActivity {
                 {
                     kropkaCounter--;
                 }
+
                 if(x.matcher(getLastCharacter()).find())
                 {
                     opers.clear();
                     System.out.println("wyczyszczono opers = "+opers.toString()+opers.isEmpty());
+                }
+                if(field.getText().toString().contains("NaN") || field.getText().toString().contains("Infinity"))
+                {
+                    clear.callOnClick();
+                    return;
                 }
                 field.setText(field.getText().toString().substring(0, field.getText().length() - 1)); //usun ostatni znak
             }

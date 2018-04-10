@@ -165,7 +165,7 @@ public class basicCalc extends AppCompatActivity {
                         toastNotification("Za malo miejsca");
                         return;
                     }
-                    if(field.getText().toString().equalsIgnoreCase("nan") || field.getText().toString().equalsIgnoreCase("infinity"))
+                    if(field.getText().toString().contains("NaN") || field.getText().toString().contains("Infinity"))
                     {
                         toastNotification("Niedozwolone dzialanie Infinity / Nan");
                         return;
@@ -251,6 +251,11 @@ public class basicCalc extends AppCompatActivity {
                 {
                     opers.clear();
                     System.out.println("wyczyszczono opers = "+opers.toString()+opers.isEmpty());
+                }
+                if(field.getText().toString().contains("NaN") || field.getText().toString().contains("Infinity"))
+                {
+                    clear.callOnClick();
+                    return;
                 }
                 field.setText(field.getText().toString().substring(0, field.getText().length() - 1)); //usun ostatni znak
             }
