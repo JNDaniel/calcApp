@@ -11,35 +11,33 @@
         android:id="@+id/mainTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:text="@string/calculator"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="896dp"
         android:layout_marginBottom="60dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainTitle">
+        app:layout_constraintTop_toBottomOf="@+id/mainTitle"
+        app:layout_constraintVertical_bias="0.0">
 
         <Button
             android:id="@+id/basicCalcBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_weight="0"
             android:text="@string/basicButton"
             android:textAlignment="center"
@@ -50,7 +48,7 @@
         <Button
             android:id="@+id/advCalcBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:elevation="0dp"
             android:text="@string/advBtn"
             android:textAlignment="center"
@@ -61,7 +59,7 @@
         <Button
             android:id="@+id/aboutMeBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:text="@string/aboutMe"
             android:textAlignment="center"
             android:textColor="?android:attr/statusBarColor"
@@ -71,7 +69,7 @@
         <Button
             android:id="@+id/exitBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:text="@string/exitBtn"
             android:textAlignment="center"
             android:textColor="?android:attr/statusBarColor"

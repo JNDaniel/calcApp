@@ -338,36 +338,71 @@ public class advancedCalc extends AppCompatActivity {
                     if(b.getText().equals("sin"))
                     {
                         wynik=Math.sin(Double.valueOf(field.getText().toString()));
+                        if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                        {
+                            toastNotification("Wynik NaN lub Infinite");
+                            return;
+                        }
                         field.setText(String.valueOf(wynik));
                     }
                     if(b.getText().equals("cos"))
                     {
                         wynik=Math.cos(Double.valueOf(field.getText().toString()));
+                        if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                        {
+                            toastNotification("Wynik NaN lub Infinite");
+                            return;
+                        }
                         field.setText(String.valueOf(wynik));
                     }
                     if(b.getText().equals("tan"))
                     {
                         wynik=Math.tan(Double.valueOf(field.getText().toString()));
+                        if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                        {
+                            toastNotification("Wynik NaN lub Infinite");
+                            return;
+                        }
                         field.setText(String.valueOf(wynik));
                     }
                     if(b.getText().equals("ln"))
                     {
                         wynik=Math.log1p(Double.valueOf(field.getText().toString()));
+                        if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                        {
+                            toastNotification("Wynik NaN lub Infinite");
+                            return;
+                        }
                         field.setText(String.valueOf(wynik));
                     }
                     if(b.getText().equals("log"))
                     {
                         wynik=Math.log10(Double.valueOf(field.getText().toString()));
+                        if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                        {
+                            toastNotification("Wynik NaN lub Infinite");
+                            return;
+                        }
                         field.setText(String.valueOf(wynik));
                     }
                     if(b.getText().equals("sqrt"))
                     {
                         wynik=Math.sqrt(Double.valueOf(field.getText().toString()));
+                        if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                        {
+                            toastNotification("Wynik NaN lub Infinite");
+                            return;
+                        }
                         field.setText(String.valueOf(wynik));
                     }
                     if(b.getText().equals("x^2"))
                     {
                         wynik=Math.pow(Double.valueOf(field.getText().toString()),2);
+                        if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                        {
+                            toastNotification("Wynik NaN lub Infinite");
+                            return;
+                        }
                         field.setText(String.valueOf(wynik));
                     }
 
@@ -407,18 +442,38 @@ public class advancedCalc extends AppCompatActivity {
             switch (operator) {
                 case "+":
                     wynik = Double.valueOf("-"+numbs[0]) + Double.valueOf(numbs[1]);
+                    if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                    {
+                        toastNotification("Wynik NaN lub Infinite");
+                        return;
+                    }
                     field.setText(wynik.toString());
                     break;
                 case "-":
                     wynik = Double.valueOf("-"+numbs[0]) - Double.valueOf(numbs[1]);
+                    if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                    {
+                        toastNotification("Wynik NaN lub Infinite");
+                        return;
+                    }
                     field.setText(wynik.toString());
                     break;
                 case "*":
                     wynik = Double.valueOf("-"+numbs[0]) * Double.valueOf(numbs[1]);
+                    if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                    {
+                        toastNotification("Wynik NaN lub Infinite");
+                        return;
+                    }
                     field.setText(wynik.toString());
                     break;
                 case "/":
                     wynik = Double.valueOf("-"+numbs[0]) / Double.valueOf(numbs[1]);
+                    if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                    {
+                        toastNotification("Wynik NaN lub Infinite");
+                        return;
+                    }
                     field.setText(wynik.toString());
                     break;
                 case "^":
@@ -444,22 +499,47 @@ public class advancedCalc extends AppCompatActivity {
             {
                 case "+":
                     wynik = Double.valueOf(numbs[0])+Double.valueOf(numbs[1]);
+                    if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                    {
+                        toastNotification("Wynik NaN lub Infinite");
+                        return;
+                    }
                     field.setText(wynik.toString());
                     break;
                 case "-":
                     wynik = Double.valueOf(numbs[0])-Double.valueOf(numbs[1]);
+                    if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                    {
+                        toastNotification("Wynik NaN lub Infinite");
+                        return;
+                    }
                     field.setText(wynik.toString());
                     break;
                 case "*":
                     wynik = Double.valueOf(numbs[0])*Double.valueOf(numbs[1]);
+                    if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                    {
+                        toastNotification("Wynik NaN lub Infinite");
+                        return;
+                    }
                     field.setText(wynik.toString());
                     break;
                 case "/":
                     wynik = Double.valueOf(numbs[0])/Double.valueOf(numbs[1]);
+                    if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                    {
+                        toastNotification("Wynik NaN lub Infinite");
+                        return;
+                    }
                     field.setText(wynik.toString());
                     break;
                 case "^":
                     wynik=Math.pow(Double.valueOf(numbs[0]),Double.valueOf(numbs[1]));
+                    if(Double.isInfinite(Double.valueOf(wynik)) || Double.isNaN(Double.valueOf(wynik)))
+                    {
+                        toastNotification("Wynik NaN lub Infinite");
+                        return;
+                    }
                     field.setText(String.valueOf(wynik));
                     break;
                 default:
